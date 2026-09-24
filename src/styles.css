@@ -362,3 +362,30 @@ button,a{font:inherit}button{color:inherit}
 @media(max-width:900px){.profile-shell{min-width:0}.profile-content{flex-direction:column}.profile-left{width:auto;padding:25px 24px 0}.profile-photo{width:min(400px,calc(100vw - 48px));height:auto;aspect-ratio:1}.profile-right{padding:35px 24px 120px;width:100%}.skills-panel{width:100%}.skills-title{width:100%}}
 
 .skill-lock{position:absolute;right:5px;bottom:4px;padding:2px 4px;background:rgba(0,0,0,.7);border:1px solid rgba(221,230,233,.65);font:500 7px/1 Poppins,sans-serif;color:#fff;letter-spacing:.5px}
+
+/* Contact page */
+.contact-page{min-height:100vh;background:#050b0d;color:var(--text);overflow:hidden}
+.contact-shell{position:relative;min-height:995px;min-width:1100px;overflow:hidden;background:#050b0d}
+.contact-background{position:absolute;inset:0;background-image:url("https://www.figma.com/api/mcp/asset/0865dbfb-d438-4d65-b2c9-50e1ee7fd84c.png");background-size:3480.89px 1958px;background-position:top left;background-repeat:no-repeat}
+.contact-content{position:relative;z-index:2;display:flex;align-items:flex-start;width:100%;padding-top:0}
+.contact-left{width:488px;padding:30px 50px 0;flex:0 0 488px}
+.contact-title{display:inline-flex;border-top:5px solid var(--text);padding-top:5px}
+.contact-title h1{margin:0;color:#fff;font:800 48px/1 Poppins,sans-serif}
+.contact-form{flex:1;min-width:0;padding:180px 50px 120px;display:flex;flex-direction:column;gap:24px}
+.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.contact-form label{display:flex;flex-direction:column;gap:10px;color:#fff;font:400 18px/1 Poppins,sans-serif}
+.contact-form input,.contact-form textarea{width:100%;border:1px solid var(--text);background:rgba(255,255,255,.16);color:#fff;padding:5px 10px;font:400 18px/1.45 Poppins,sans-serif;outline:none}
+.contact-form input{height:39px}
+.contact-form textarea{height:291px;resize:vertical;min-height:180px}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(190,190,190,.7);opacity:1}
+.contact-form input:focus,.contact-form textarea:focus{background:rgba(255,255,255,.22);box-shadow:0 0 0 1px rgba(221,230,233,.3)}
+.contact-submit{align-self:flex-start;border:1px solid var(--text);background:#8d654c;color:#fff;padding:15px 30px;cursor:pointer;font:500 20px/1 Poppins,sans-serif;transition:filter .2s,transform .2s}
+.contact-submit:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.contact-success{margin:0;color:#d6e1e4;font:400 14px/1.4 Poppins,sans-serif}
+.contact-footer{position:absolute!important;right:61px;bottom:38px}
+@media(max-width:900px){
+ .contact-shell{min-width:0;min-height:100vh}.contact-content{flex-direction:column}.contact-left{width:auto;flex:auto;padding:25px 24px 0}.contact-form{width:100%;padding:40px 24px 130px}.contact-footer{right:24px;bottom:24px}
+}
+@media(max-width:640px){
+ .contact-row{grid-template-columns:1fr}.contact-form{padding-top:30px}.contact-footer{left:20px;right:20px;justify-content:space-between}
+}
