@@ -54,43 +54,69 @@ function Header({ active, setActive, projects = false }) {
 
 const techIcon = (src, alt) => <img className="tech-icon" src={src} alt={alt} />;
 
-function ProjectCard({ variant = "diggers", title, subtitle, description, stack, duration, mission, image }) {
+function ProjectCard({ variant = "diggers", title, subtitle, description, stack, duration, mission, image, onOpen }) {
   const isAlps = variant === "alps";
   return (
-    <article className={`project-card project-card-${variant}`}>
+    <button type="button" className={`project-card project-card-${variant}`} onClick={onOpen} aria-label={`Ouvrir ${title}`}>
       <div className="project-info">
-        <div className="project-icon">
-          <img src={isAlps ? projectAssets.emblem : projectAssets.diggers} alt="" />
-        </div>
-        <div className="project-copy">
-          <h3>{title}</h3>
-          <p>{subtitle}</p>
-        </div>
+        <div className="project-icon"><img src={isAlps ? projectAssets.emblem : projectAssets.diggers} alt="" /></div>
+        <div className="project-copy"><h3>{title}</h3><p>{subtitle}</p></div>
         <div className="project-techs">
-          {isAlps
-            ? techIcon(projectAssets.next, "Next.js")
-            : (
-              <>
-                {techIcon(projectAssets.react, "React")}
-                {techIcon(projectAssets.node, "Node.js")}
-              </>
-            )}
+          {isAlps ? techIcon(projectAssets.next, "Next.js") : <>{techIcon(projectAssets.react, "React")}{techIcon(projectAssets.node, "Node.js")}</>}
         </div>
       </div>
-      <div className="project-image">
-        <img src={image} alt="" />
-      </div>
+      <div className="project-image"><img src={image} alt="" /></div>
       <div className="project-description">
         <p>{description}</p>
         <p className="project-meta">Stack : {stack}</p>
         <p className="project-meta">Durée : {duration}</p>
         <p className="project-meta">Mission : {mission}</p>
       </div>
-    </article>
+    </button>
+  );
+}
+
+function ProjectModal({ onClose }) {
+  return (
+    <div className="project-modal-backdrop" role="presentation" onMouseDown={(event) => {
+      if (event.target === event.currentTarget) onClose();
+    }}>
+      <div className="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+        <div className="modal-info">
+          <div className="project-icon"><img src={projectAssets.diggers} alt="" /></div>
+          <div className="project-copy"><h3 id="project-modal-title">Diggers Factory</h3><p>Alternance (2026)</p></div>
+          <button type="button" className="modal-close" onClick={onClose} aria-label="Fermer">×</button>
+        </div>
+        <div className="modal-images">
+          <div className="modal-image-main"><img src={projectAssets.diggersImage} alt="Interface Diggers Factory" /></div>
+          <div className="modal-image-column">
+            <img src="https://www.figma.com/api/mcp/asset/d548887d-eef1-417d-8c3c-2cc386f40b70.png" alt="Écran Diggers Factory" />
+            <img src="https://www.figma.com/api/mcp/asset/cbfba6c4-36cc-428e-9bae-d316f6d823b4.png" alt="Capture Diggers Factory" />
+          </div>
+        </div>
+        <div className="project-modal-description">
+          <p>Diggers Factory crée une meilleure façon pour les artistes et les fans de profiter de la musique physique.</p>
+          <p className="project-meta">Stack : React.JS/Node.JS</p>
+          <p className="project-meta">Durée : 10 mois (en cours)</p>
+          <p className="project-meta">Poste : Testeur QA</p>
+          <p className="project-meta modal-role">
+            • Écrire, maintenir et améliorer les tests End-to-End couvrant les parcours critiques du produit.<br />
+            • Réaliser des tests fonctionnels rapides lors des déploiements en staging.<br />
+            • Contribuer à la qualité du code via les tests unitaires.<br />
+            • Identifier, reproduire et remonter les anomalies.<br />
+            • Collaborer avec les développeurs sur les scénarios et workflows.<br />
+            • Documenter les scénarios de test et les workflows automatisés.<br />
+            • Participer ponctuellement au développement.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
 
 function ProjectsPage({ active, setActive }) {
+  const [openProject, setOpenProject] = useState(null);
+  const closeProject = () => setOpenProject(null);
   return (
     <main className="projects-page">
       <section className="projects-shell">
@@ -104,6 +130,7 @@ function ProjectsPage({ active, setActive }) {
 
           <div className="projects-grid">
             <ProjectCard
+              onOpen={() => setOpenProject("diggers")}
               title="Diggers Factory"
               subtitle="Alternance (2026)"
               description="Diggers Factory crée une meilleure façon pour les artistes et les fans de profiter de la musique physique."
@@ -113,6 +140,7 @@ function ProjectsPage({ active, setActive }) {
               image={projectAssets.diggersImage}
             />
             <ProjectCard
+              onOpen={() => setOpenProject("alps")}
               variant="alps"
               title="Alps-direct"
               subtitle="Site-web (2025)"
@@ -131,7 +159,8 @@ function ProjectsPage({ active, setActive }) {
           <a href="mailto:rubenmuya9129@gmail.com" aria-label="Email">{techIcon(projectAssets.email, "Email")}</a>
           <a href="https://linkedin.com/in/rubenmuya" target="_blank" rel="noreferrer" aria-label="LinkedIn">{techIcon(projectAssets.linkedin, "LinkedIn")}</a>
         </footer>
-      </section>
+        {openProject === "diggers" && <ProjectModal onClose={closeProject} />}
+        </section>
     </main>
   );
 }
