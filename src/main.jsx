@@ -123,7 +123,11 @@ function App() {
           </nav>
         </header>
 
-        <div\n          className="planet-section"\n          aria-label="Planètes"\n          style={{ transform: `rotate(${rotation}deg)` }}\n        >
+        <div
+          className="planet-section"
+          aria-label="Planètes"
+          style={{ transform: `rotate(${rotation}deg)` }}
+        >
           {planets.map((planet) => (
             <button
               key={planet.key}
