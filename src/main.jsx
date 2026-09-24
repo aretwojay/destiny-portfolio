@@ -165,6 +165,67 @@ function ProjectsPage({ active, setActive }) {
   );
 }
 
+
+function ProfilePage({ active, setActive }) {
+  const skills = [
+    ["React", "https://www.figma.com/api/mcp/asset/58100038-e149-4810-b436-fda26dbc074e.svg", "https://www.figma.com/api/mcp/asset/23697011-9512-411b-a4fa-aec9c5c6fdaf.png", 88],
+    ["PHP", "", "https://www.figma.com/api/mcp/asset/08558cda-70cd-4670-a1b3-1922eff2b3d7.png", 88],
+    ["Next.JS", "", "https://www.figma.com/api/mcp/asset/033abc5a-ddc8-4b4c-a5f4-1cd09284b9f8.png", 88],
+    ["Node", "", "https://www.figma.com/api/mcp/asset/6b909bff-3360-4987-8b34-caa18d546bd9.png", 88],
+    ["MySQL", "", "https://www.figma.com/api/mcp/asset/61749af9-0dae-4762-98e7-79d56f173fa4.png", 88],
+  ];
+
+  return (
+    <main className="profile-page">
+      <section className="profile-shell">
+        <div className="profile-background" />
+        <Header active={active} setActive={setActive} />
+        <section className="profile-content">
+          <div className="profile-left">
+            <div className="profile-title"><h1>PROFIL</h1></div>
+            <div className="profile-photo">
+              <img src="https://www.figma.com/api/mcp/asset/4196262b-b1ae-4425-b0ce-c79616f868f7.png" alt="Portrait" />
+            </div>
+          </div>
+
+          <div className="profile-right">
+            <div className="profile-copy">
+              <p>Développeur full-stack basé en région parisienne, j’adore créer et découvrir de nouvelles choses. Avec 3 ans d’expérience, j’ai travaillé sur de nombreux projets, actuellement en Bachelor à Décode, je souhaite consolider mes connaissances en dévelopmment.</p>
+              <p className="profile-cta">Une idée, un besoin en tête ? On en parle ensemble !</p>
+            </div>
+
+            <div className="skills-panel">
+              <div className="skills-title">
+                <div className="skills-title-icon"><img src="https://www.figma.com/api/mcp/asset/0cf89680-6410-4dcc-b3d1-6ad664285add.svg" alt="" /></div>
+                <h2>COMPÉTENCES</h2>
+              </div>
+              <div className="skills-grid">
+                {skills.map(([name, icon, banner, level]) => (
+                  <div className="skill-card" key={name}>
+                    <div className="skill-banner">
+                      <img src={banner} alt="" />
+                      {icon && <img className="skill-symbol" src={icon} alt="" />}
+                      {!icon && <span className="skill-name">{name}</span>}
+                    </div>
+                    <div className="skill-level"><span style={{ width: `${level}%` }} /></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer className="projects-footer">
+          <a href="#home" aria-label="Code">{techIcon("https://www.figma.com/api/mcp/asset/a8d6a155-e5a3-4d28-b2fe-86e555809135.svg", "Code")}</a>
+          <a href="https://github.com/aretwojay" target="_blank" rel="noreferrer" aria-label="GitHub">{techIcon("https://www.figma.com/api/mcp/asset/3dabbb52-aa1a-4166-9498-f1912d5e377e.svg", "GitHub")}</a>
+          <a href="mailto:rubenmuya9129@gmail.com" aria-label="Email">{techIcon("https://www.figma.com/api/mcp/asset/da1410a9-e99a-4f01-b07b-a6656bfa919f.svg", "Email")}</a>
+          <a href="https://linkedin.com/in/rubenmuya" target="_blank" rel="noreferrer" aria-label="LinkedIn">{techIcon("https://www.figma.com/api/mcp/asset/3ee685b4-f4c4-4160-9877-6b06ef88df7a.svg", "LinkedIn")}</a>
+        </footer>
+      </section>
+    </main>
+  );
+}
+
 function HomePage({ active, setActive }) {
   const [step, setStep] = useState(0);
   return (
@@ -190,10 +251,10 @@ function HomePage({ active, setActive }) {
 }
 
 function App() {
-  const [active, setActive] = useState("PROJETS");
-  return active === "PROJETS"
-    ? <ProjectsPage active={active} setActive={setActive} />
-    : <HomePage active={active} setActive={setActive} />;
+  const [active, setActive] = useState("PROFIL");
+  if (active === "PROJETS") return <ProjectsPage active={active} setActive={setActive} />;
+  if (active === "PROFIL") return <ProfilePage active={active} setActive={setActive} />;
+  return <HomePage active={active} setActive={setActive} />;
 }
 
 createRoot(document.getElementById("root")).render(<App />);
