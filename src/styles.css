@@ -356,3 +356,5 @@ button,a{font:inherit}button{color:inherit}
 .skill-level{width:109px;height:14px;border:1px solid var(--text);overflow:hidden}
 .skill-level span{display:block;height:100%;background:#60a0ba}
 @media(max-width:900px){.profile-shell{min-width:0}.profile-content{flex-direction:column}.profile-left{width:auto;padding:25px 24px 0}.profile-photo{width:min(400px,calc(100vw - 48px));height:auto;aspect-ratio:1}.profile-right{padding:35px 24px 120px;width:100%}.skills-panel{width:100%}.skills-title{width:100%}}
+
+.skill-lock{position:absolute;right:5px;bottom:4px;padding:2px 4px;background:rgba(0,0,0,.7);border:1px solid rgba(221,230,233,.65);font:500 7px/1 Poppins,sans-serif;color:#fff;letter-spacing:.5px}
