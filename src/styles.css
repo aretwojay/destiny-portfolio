@@ -327,3 +327,32 @@ button,a{font:inherit}button{color:inherit}
   .modal-image-main { height: 220px; }
   .modal-image-column { height: 260px; }
 }
+
+/* Profile page */
+.profile-page{min-height:100vh;background:#050b0d;color:var(--text);overflow-x:hidden}
+.profile-shell{position:relative;min-height:100vh;min-width:1100px;overflow:hidden;background:#050b0d}
+.profile-background{position:absolute;inset:0;background-image:url("https://www.figma.com/api/mcp/asset/746f2b41-6df9-47b6-9bfa-27cd32771742.png");background-size:1740.44px 979px;background-repeat:no-repeat;background-position:left top}
+.profile-content{position:relative;z-index:2;display:flex;align-items:flex-start;min-height:720px}
+.profile-left{width:488px;padding:30px 50px 0;display:flex;flex-direction:column;gap:27px}
+.profile-title{display:inline-flex;border-top:5px solid var(--text);padding-top:5px;align-self:flex-start}
+.profile-title h1{margin:0;color:#fff;font:800 48px/1 Poppins,sans-serif}
+.profile-photo{width:400px;height:400px;box-shadow:6px -1px 36px 0 #89624a;overflow:hidden}
+.profile-photo img{width:100%;height:100%;object-fit:cover}
+.profile-right{flex:1;min-width:0;padding:74px 50px 0}
+.profile-copy{max-width:778px;padding:27px 28px;display:flex;flex-direction:column;gap:10px;color:#fff;font:400 18px/1.35 Poppins,sans-serif}
+.profile-copy p{margin:0}
+.profile-copy .profile-cta{font-weight:500;font-size:20px}
+.skills-panel{margin-top:25px;width:721px;max-width:100%}
+.skills-title{height:62px;width:703px;max-width:100%;display:flex;align-items:center;gap:10px;padding:5px 15px;background:rgba(255,255,255,.15);border-bottom:3px solid var(--text)}
+.skills-title-icon{width:58px;height:52px;padding:5px;display:grid;place-items:center}
+.skills-title-icon img{width:100%;height:100%;object-fit:contain}
+.skills-title h2{margin:0;font:600 24px/1 Poppins,sans-serif}
+.skills-grid{display:flex;flex-wrap:wrap;gap:10px;padding-top:1px}
+.skill-card{width:109px;display:flex;flex-direction:column;gap:10px}
+.skill-banner{height:64px;width:109px;border:1px solid var(--text);position:relative;overflow:hidden;background:#111}
+.skill-banner>img:first-child{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(2px);transform:scale(1.06)}
+.skill-symbol{position:absolute!important;inset:50% auto auto 50%!important;width:36px!important;height:36px!important;transform:translate(-50%,-50%);filter:drop-shadow(2px 2px 3px #000)!important;object-fit:contain!important}
+.skill-name{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);font:400 12px Poppins,sans-serif;color:#fff;text-shadow:2px 1px 3px #000;white-space:nowrap}
+.skill-level{width:109px;height:14px;border:1px solid var(--text);overflow:hidden}
+.skill-level span{display:block;height:100%;background:#60a0ba}
+@media(max-width:900px){.profile-shell{min-width:0}.profile-content{flex-direction:column}.profile-left{width:auto;padding:25px 24px 0}.profile-photo{width:min(400px,calc(100vw - 48px));height:auto;aspect-ratio:1}.profile-right{padding:35px 24px 120px;width:100%}.skills-panel{width:100%}.skills-title{width:100%}}
