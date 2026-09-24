@@ -231,6 +231,44 @@ function ProfilePage({ active, setActive }) {
   );
 }
 
+
+function ContactPage({ active, setActive }) {
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ nom:"", prenom:"", email:"", message:"" });
+  const update = (key) => (e) => setForm((v) => ({ ...v, [key]: e.target.value }));
+  const submit = (e) => { e.preventDefault(); setSent(true); };
+
+  return (
+    <main className="contact-page">
+      <section className="contact-shell">
+        <div className="contact-background" />
+        <Header active={active} setActive={setActive} />
+        <section className="contact-content">
+          <div className="contact-left">
+            <div className="contact-title"><h1>CONTACT</h1></div>
+          </div>
+          <form className="contact-form" onSubmit={submit}>
+            <div className="contact-row">
+              <label>Nom<input value={form.nom} onChange={update("nom")} placeholder="Doe" /></label>
+              <label>Prénom<input value={form.prenom} onChange={update("prenom")} placeholder="John" /></label>
+            </div>
+            <label>Email<input type="email" value={form.email} onChange={update("email")} placeholder="john@doe.com" /></label>
+            <label>Message<textarea value={form.message} onChange={update("message")} placeholder="J’aimerai travailler avec toi sur un projet..." /></label>
+            <button className="contact-submit" type="submit">Envoyer</button>
+            {sent && <p className="contact-success">Message prêt à être envoyé.</p>}
+          </form>
+        </section>
+        <div className="contact-footer projects-footer">
+          <a href="#home" aria-label="Code">{techIcon("https://www.figma.com/api/mcp/asset/5b257ed7-3528-4de1-959a-4a40dcad19da.svg","Code")}</a>
+          <a href="https://github.com/aretwojay" target="_blank" rel="noreferrer" aria-label="GitHub">{techIcon("https://www.figma.com/api/mcp/asset/bcffc74b-bb1a-4a86-9fb8-8e708d974c62.svg","GitHub")}</a>
+          <a href="mailto:rubenmuya9129@gmail.com" aria-label="Email">{techIcon("https://www.figma.com/api/mcp/asset/b62e3476-e909-414a-a9b1-c32e2c746f59.svg","Email")}</a>
+          <a href="https://linkedin.com/in/rubenmuya" target="_blank" rel="noreferrer" aria-label="LinkedIn">{techIcon("https://www.figma.com/api/mcp/asset/bd0db656-50f9-4cdb-b282-4eb899aec7cf.svg","LinkedIn")}</a>
+        </div>
+      </section>
+    </main>
+  );
+}
+
 function HomePage({ active, setActive }) {
   const [step, setStep] = useState(0);
   return (
@@ -256,9 +294,10 @@ function HomePage({ active, setActive }) {
 }
 
 function App() {
-  const [active, setActive] = useState("PROFIL");
+  const [active, setActive] = useState("CONTACT");
   if (active === "PROJETS") return <ProjectsPage active={active} setActive={setActive} />;
   if (active === "PROFIL") return <ProfilePage active={active} setActive={setActive} />;
+  if (active === "CONTACT") return <ContactPage active={active} setActive={setActive} />;
   return <HomePage active={active} setActive={setActive} />;
 }
 
