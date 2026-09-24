@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Github, Mail, Linkedin, FileCode2 } from "lucide-react";
 import "./styles.css";
@@ -21,8 +21,76 @@ const planets = [
 
 function App() {
   const [active, setActive] = useState("ACCUEIL");
+  const [rotation, setRotation] = useState(0);
+  const rotationRef = useRef(0);
+  const dragRef = useRef({ active: false, x: 0, lastX: 0, velocity: 0, moved: false });
+  const frameRef = useRef(null);
 
   const nav = ["ACCUEIL", "PROFIL", "PROJETS", "CONTACT"];
+
+  const startPlanetDrag = (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    event.preventDefault();
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+    dragRef.current = {
+      active: true,
+      x: event.clientX,
+      lastX: event.clientX,
+      velocity: 0,
+      moved: false,
+    };
+    document.body.classList.add("is-dragging");
+  };
+
+  const movePlanetDrag = (event) => {
+    const drag = dragRef.current;
+    if (!drag.active) return;
+
+    const delta = event.clientX - drag.lastX;
+    if (Math.abs(event.clientX - drag.x) > 4) drag.moved = true;
+    drag.lastX = event.clientX;
+    drag.velocity = delta * 0.42;
+
+    rotationRef.current += delta * 0.42;
+    setRotation(rotationRef.current);
+  };
+
+  const endPlanetDrag = () => {
+    const drag = dragRef.current;
+    if (!drag.active) return;
+
+    drag.active = false;
+    document.body.classList.remove("is-dragging");
+
+    // Give the solar system a small amount of momentum after the drag.
+    let velocity = drag.velocity;
+    const coast = () => {
+      velocity *= 0.94;
+      if (Math.abs(velocity) < 0.03) {
+        frameRef.current = null;
+        return;
+      }
+      rotationRef.current += velocity;
+      setRotation(rotationRef.current);
+      frameRef.current = requestAnimationFrame(coast);
+    };
+
+    cancelAnimationFrame(frameRef.current);
+    frameRef.current = requestAnimationFrame(coast);
+  };
+
+  useEffect(() => {
+    window.addEventListener("pointermove", movePlanetDrag);
+    window.addEventListener("pointerup", endPlanetDrag);
+    window.addEventListener("pointercancel", endPlanetDrag);
+
+    return () => {
+      window.removeEventListener("pointermove", movePlanetDrag);
+      window.removeEventListener("pointerup", endPlanetDrag);
+      window.removeEventListener("pointercancel", endPlanetDrag);
+      cancelAnimationFrame(frameRef.current);
+    };
+  }, []);
 
   return (
     <main className="portfolio-shell">
@@ -55,14 +123,22 @@ function App() {
           </nav>
         </header>
 
-        <div className="planet-section" aria-label="Planètes">
+        <div\n          className="planet-section"\n          aria-label="Planètes"\n          style={{ transform: `rotate(${rotation}deg)` }}\n        >
           {planets.map((planet) => (
             <button
               key={planet.key}
               type="button"
               className={`planet ${planet.className}`}
-              onClick={() => setActive(planet.key.toUpperCase())}
-              aria-label={planet.label}
+              onPointerDown={startPlanetDrag}
+              onClick={(event) => {
+                if (dragRef.current.moved) {
+                  event.preventDefault();
+                  dragRef.current.moved = false;
+                  return;
+                }
+                setActive(planet.key.toUpperCase());
+              }}
+              aria-label={`${planet.label}. Faites glisser pour faire pivoter les planètes.`}
             >
               <span className="planet-halo" />
               <img src={planet.image} alt="" />
