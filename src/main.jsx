@@ -173,8 +173,14 @@ function ProfilePage({ active, setActive }) {
     ["Next.JS", "", "https://www.figma.com/api/mcp/asset/033abc5a-ddc8-4b4c-a5f4-1cd09284b9f8.png", 88],
     ["Node", "", "https://www.figma.com/api/mcp/asset/6b909bff-3360-4987-8b34-caa18d546bd9.png", 88],
     ["MySQL", "", "https://www.figma.com/api/mcp/asset/61749af9-0dae-4762-98e7-79d56f173fa4.png", 88],
+    ["JavaScript", "", "https://www.figma.com/api/mcp/asset/a3f72169-d252-4ff2-9cae-f2afecf377b6.png", 88],
+    ["Playwright", "", "https://www.figma.com/api/mcp/asset/0c1da41c-d064-4870-a9ee-525655ff163c.png", 88],
+    ["Figma", "", "https://www.figma.com/api/mcp/asset/6a285b2d-95b0-419d-a6a2-12807fa96cbd.png", 88],
+    ["Laravel", "", "https://www.figma.com/api/mcp/asset/081e6b81-ae2e-4b9f-9e55-7a281efd13e5.png", 88],
+    ["React Native", "", "https://www.figma.com/api/mcp/asset/073c3f1b-93c6-48c9-b199-91c1d7b3072b.png", 88, true],
+    ["Vue.JS", "", "https://www.figma.com/api/mcp/asset/081e6b81-ae2e-4b9f-9e55-7a281efd13e5.png", 88, true],
+    ["Astro", "", "https://www.figma.com/api/mcp/asset/a3f72169-d252-4ff2-9cae-f2afecf377b6.png", 88, true],
   ];
-
   return (
     <main className="profile-page">
       <section className="profile-shell">
@@ -200,12 +206,12 @@ function ProfilePage({ active, setActive }) {
                 <h2>COMPÉTENCES</h2>
               </div>
               <div className="skills-grid">
-                {skills.map(([name, icon, banner, level]) => (
+                {skills.map(([name, icon, banner, level, locked]) => (
                   <div className="skill-card" key={name}>
                     <div className="skill-banner">
                       <img src={banner} alt="" />
                       {icon && <img className="skill-symbol" src={icon} alt="" />}
-                      {!icon && <span className="skill-name">{name}</span>}
+                      {!icon && <span className="skill-name">{name}</span>}{locked && <span className="skill-lock">LOCK</span>}
                     </div>
                     <div className="skill-level"><span style={{ width: `${level}%` }} /></div>
                   </div>
