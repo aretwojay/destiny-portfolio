@@ -168,19 +168,20 @@ function ProjectsPage({ active, setActive }) {
 
 function ProfilePage({ active, setActive }) {
   const skills = [
-    ["React", "https://www.figma.com/api/mcp/asset/58100038-e149-4810-b436-fda26dbc074e.svg", "https://www.figma.com/api/mcp/asset/23697011-9512-411b-a4fa-aec9c5c6fdaf.png", 88],
-    ["PHP", "", "https://www.figma.com/api/mcp/asset/08558cda-70cd-4670-a1b3-1922eff2b3d7.png", 88],
-    ["Next.JS", "", "https://www.figma.com/api/mcp/asset/033abc5a-ddc8-4b4c-a5f4-1cd09284b9f8.png", 88],
-    ["Node", "", "https://www.figma.com/api/mcp/asset/6b909bff-3360-4987-8b34-caa18d546bd9.png", 88],
-    ["MySQL", "", "https://www.figma.com/api/mcp/asset/61749af9-0dae-4762-98e7-79d56f173fa4.png", 88],
-    ["JavaScript", "", "https://www.figma.com/api/mcp/asset/a3f72169-d252-4ff2-9cae-f2afecf377b6.png", 88],
-    ["Playwright", "", "https://www.figma.com/api/mcp/asset/0c1da41c-d064-4870-a9ee-525655ff163c.png", 88],
-    ["Figma", "", "https://www.figma.com/api/mcp/asset/6a285b2d-95b0-419d-a6a2-12807fa96cbd.png", 88],
-    ["Laravel", "", "https://www.figma.com/api/mcp/asset/081e6b81-ae2e-4b9f-9e55-7a281efd13e5.png", 88],
-    ["React Native", "", "https://www.figma.com/api/mcp/asset/073c3f1b-93c6-48c9-b199-91c1d7b3072b.png", 88, true],
-    ["Vue.JS", "", "https://www.figma.com/api/mcp/asset/081e6b81-ae2e-4b9f-9e55-7a281efd13e5.png", 88, true],
-    ["Astro", "", "https://www.figma.com/api/mcp/asset/a3f72169-d252-4ff2-9cae-f2afecf377b6.png", 88, true],
+    ["React", "https://www.figma.com/api/mcp/asset/58100038-e149-4810-b436-fda26dbc074e.svg", "https://www.figma.com/api/mcp/asset/23697011-9512-411b-a4fa-aec9c5c6fdaf.png", 88, false],
+    ["PHP", "", "https://www.figma.com/api/mcp/asset/08558cda-70cd-4670-a1b3-1922eff2b3d7.png", 88, false],
+    ["Next.JS", "", "https://www.figma.com/api/mcp/asset/033abc5a-ddc8-4b4c-a5f4-1cd09284b9f8.png", 88, false],
+    ["Node", "", "https://www.figma.com/api/mcp/asset/6b909bff-3360-4987-8b34-caa18d546bd9.png", 88, false],
+    ["MySQL", "", "https://www.figma.com/api/mcp/asset/61749af9-0dae-4762-98e7-79d56f173fa4.png", 88, false],
+    ["JavaScript", "", "https://www.figma.com/api/mcp/asset/a3f72169-d252-4ff2-9cae-f2afecf377b6.png", 88, false],
+    ["Playwright", "", "https://www.figma.com/api/mcp/asset/0c1da41c-d064-4870-a9ee-525655ff163c.png", 88, false],
+    ["Figma", "", "https://www.figma.com/api/mcp/asset/6a285b2d-95b0-419d-a6a2-12807fa96cbd.png", 88, false],
+    ["Laravel", "", "https://www.figma.com/api/mcp/asset/081e6b81-ae2e-4b9f-9e55-7a281efd13e5.png", 88, false],
+    ["React Native", "", "https://www.figma.com/api/mcp/asset/073c3f1b-93c6-48c9-b199-91c1d7b3072b.png", 0, true],
+    ["Vue.JS", "https://www.figma.com/api/mcp/asset/7f245202-be75-4bd1-afb0-8e4f99063f66.svg", "https://www.figma.com/api/mcp/asset/081e6b81-ae2e-4b9f-9e55-7a281efd13e5.png", 0, true],
+    ["Astro", "", "https://www.figma.com/api/mcp/asset/a3f72169-d252-4ff2-9cae-f2afecf377b6.png", 0, true],
   ];
+
   return (
     <main className="profile-page">
       <section className="profile-shell">
@@ -193,13 +194,11 @@ function ProfilePage({ active, setActive }) {
               <img src="https://www.figma.com/api/mcp/asset/4196262b-b1ae-4425-b0ce-c79616f868f7.png" alt="Portrait" />
             </div>
           </div>
-
           <div className="profile-right">
             <div className="profile-copy">
               <p>Développeur full-stack basé en région parisienne, j’adore créer et découvrir de nouvelles choses. Avec 3 ans d’expérience, j’ai travaillé sur de nombreux projets, actuellement en Bachelor à Décode, je souhaite consolider mes connaissances en dévelopmment.</p>
               <p className="profile-cta">Une idée, un besoin en tête ? On en parle ensemble !</p>
             </div>
-
             <div className="skills-panel">
               <div className="skills-title">
                 <div className="skills-title-icon"><img src="https://www.figma.com/api/mcp/asset/0cf89680-6410-4dcc-b3d1-6ad664285add.svg" alt="" /></div>
@@ -207,20 +206,20 @@ function ProfilePage({ active, setActive }) {
               </div>
               <div className="skills-grid">
                 {skills.map(([name, icon, banner, level, locked]) => (
-                  <div className="skill-card" key={name}>
+                  <div className={`skill-card ${locked ? "skill-card-locked" : ""}`} key={name}>
                     <div className="skill-banner">
                       <img src={banner} alt="" />
                       {icon && <img className="skill-symbol" src={icon} alt="" />}
-                      {!icon && <span className="skill-name">{name}</span>}{locked && <span className="skill-lock">LOCK</span>}
+                      {!icon && !locked && <span className="skill-name">{name}</span>}
+                      {locked && <img className="skill-lock" src="https://www.figma.com/api/mcp/asset/7796109b-1b2f-45f3-9ef1-83da791dc051.svg" alt="" />}
                     </div>
-                    <div className="skill-level"><span style={{ width: `${level}%` }} /></div>
+                    <div className="skill-level">{!locked && <span style={{ width: `${level}%` }} />}</div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
         </section>
-
         <footer className="projects-footer">
           <a href="#home" aria-label="Code">{techIcon("https://www.figma.com/api/mcp/asset/a8d6a155-e5a3-4d28-b2fe-86e555809135.svg", "Code")}</a>
           <a href="https://github.com/aretwojay" target="_blank" rel="noreferrer" aria-label="GitHub">{techIcon("https://www.figma.com/api/mcp/asset/3dabbb52-aa1a-4166-9498-f1912d5e377e.svg", "GitHub")}</a>
