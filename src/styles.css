@@ -307,3 +307,30 @@ button { color: inherit; }
   .footer { left: 20px; right: 20px; justify-content: space-between; }
   .footer a { width: 54px; height: 54px; }
 }
+
+/* Interactive orbital drag */
+body.is-dragging,
+body.is-dragging * {
+  cursor: grabbing !important;
+  user-select: none;
+}
+
+.planet-section {
+  transform-origin: 50% 48%;
+  transition: transform 120ms cubic-bezier(.2,.7,.2,1);
+  will-change: transform;
+}
+
+.planet {
+  touch-action: none;
+}
+
+.planet-section .planet {
+  animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planet-section {
+    transition: none;
+  }
+}
