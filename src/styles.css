@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Poppins:wght@300;500;600;800&display=swap");
+
+:root {
+  --text: #dde6e9;
+  --muted: rgba(221, 230, 233, 0.74);
+  --panel: rgba(5, 11, 13, 0.72);
+  --line: rgba(255, 255, 255, 0.1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #050b0d;
+  color: var(--text);
+  font-family: Inter, sans-serif;
+}
+button, a { font: inherit; }
+button { color: inherit; }
+
+.portfolio-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #050b0d;
+}
+
+.hero {
+  position: relative;
+  min-height: 865px;
+  height: 100svh;
+  max-height: 865px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -3;
+}
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.16), transparent 28%, rgba(0,0,0,.16)),
+    radial-gradient(circle at center, transparent 38%, rgba(0,0,0,.18) 100%);
+  pointer-events: none;
+}
+
+.header {
+  position: relative;
+  height: 149px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 51px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.header-mask {
+  position: absolute;
+  inset: -9px 0 auto;
+  height: 166px;
+  background: #000;
+  opacity: .48;
+  mask-image: url("https://www.figma.com/api/mcp/asset/19e6ac2b-9843-43e4-bd04-7307d93ef9a4.svg");
+  mask-repeat: no-repeat;
+  mask-size: 1440px 165px;
+  mask-position: 0 9px;
+  z-index: -1;
+}
+.identity {
+  width: 711px;
+  display: flex;
+  align-items: center;
+  gap: 31px;
+}
+.emblem-wrap {
+  width: 69px;
+  height: 69px;
+  flex: 0 0 auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.emblem-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.identity-copy {
+  width: 372px;
+  font-family: Poppins, sans-serif;
+  font-size: 24px;
+  line-height: 1.38;
+}
+.name { font-weight: 600; color: #d6e1e4; }
+.status { font-weight: 300; color: var(--text); }
+.navbar { display: flex; align-items: center; gap: 17px; }
+.nav-link {
+  border: 0;
+  background: transparent;
+  padding: 10px;
+  color: var(--muted);
+  cursor: pointer;
+  font: 500 16px/1 Poppins, sans-serif;
+  transition: color .2s ease, transform .2s ease;
+}
+.nav-link:hover, .nav-link.active { color: var(--text); }
+.nav-link:hover { transform: translateY(-1px); }
+
+.planet-section {
+  position: absolute;
+  inset: 149px 0 0;
+}
+.planet {
+  position: absolute;
+  display: block;
+  padding: 7px;
+  transition: transform .35s ease, filter .35s ease;
+}
+.planet:hover {
+  transform: scale(1.035);
+  filter: brightness(1.08);
+}
+.planet img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.planet-earth {
+  left: 3.84%;
+  top: 58px;
+  width: 20.2%;
+  aspect-ratio: 1;
+  filter: blur(2px);
+}
+.planet-mars {
+  right: 4.3%;
+  top: 31px;
+  width: 25.1%;
+  aspect-ratio: 1;
+  filter: blur(2px);
+}
+.planet-venus {
+  left: 32.91%;
+  right: 29.39%;
+  top: 30.43%;
+  bottom: 3.19%;
+}
+.planet-moon {
+  left: 54.16%;
+  right: 32.09%;
+  top: -3.19%;
+  bottom: 72.77%;
+  filter: blur(12px);
+}
+
+.title-block {
+  position: absolute;
+  left: 49px;
+  bottom: 47px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.title-rule {
+  border-top: 15px solid var(--text);
+  padding-top: 17px;
+}
+.title-rule h1 {
+  margin: 0;
+  font: 800 48px/1 Poppins, sans-serif;
+  letter-spacing: 0;
+}
+.description-rule {
+  border-top: 1px solid var(--text);
+  padding-top: 10px;
+}
+.description-rule p {
+  width: 350px;
+  margin: 0;
+  font: 400 16px/1.45 Inter, sans-serif;
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(0,0,0,.18);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.footer {
+  position: absolute;
+  z-index: 5;
+  right: 61px;
+  bottom: 38px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.footer a {
+  width: 67px;
+  height: 67px;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  border: 2px solid var(--text);
+  color: var(--text);
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+.footer a:hover {
+  background: var(--text);
+  color: #050b0d;
+  transform: translateY(-3px);
+}
+
+.content-section {
+  min-height: 70vh;
+  padding: 120px clamp(32px, 8vw, 120px);
+  background:
+    radial-gradient(circle at 80% 20%, rgba(76, 113, 128, .14), transparent 28%),
+    #050b0d;
+  border-top: 1px solid var(--line);
+}
+.content-section .eyebrow {
+  margin: 0 0 20px;
+  font: 500 14px/1 Poppins, sans-serif;
+  letter-spacing: .16em;
+  color: var(--muted);
+}
+.content-section h2 {
+  max-width: 820px;
+  margin: 0 0 24px;
+  font: 600 clamp(36px, 5vw, 72px)/1.02 Poppins, sans-serif;
+}
+.content-section > p:last-child {
+  max-width: 640px;
+  margin: 0;
+  color: var(--muted);
+  font: 400 18px/1.7 Inter, sans-serif;
+}
+.contact-section { padding-bottom: 180px; }
+
+@media (max-width: 900px) {
+  .hero { min-height: 760px; }
+  .header { height: auto; min-height: 118px; padding: 25px; align-items: flex-start; gap: 24px; }
+  .identity { width: auto; gap: 18px; }
+  .emblem-wrap { width: 56px; height: 56px; }
+  .identity-copy { width: auto; font-size: 17px; }
+  .navbar { gap: 2px; flex-wrap: wrap; justify-content: flex-end; }
+  .nav-link { font-size: 13px; padding: 8px; }
+  .planet-section { inset-top: 118px; }
+  .title-block { left: 28px; bottom: 105px; }
+  .title-rule h1 { font-size: clamp(38px, 9vw, 48px); }
+  .footer { right: 28px; bottom: 28px; gap: 12px; }
+  .footer a { width: 52px; height: 52px; }
+}
+@media (max-width: 640px) {
+  .hero { min-height: 720px; height: 100svh; }
+  .header { flex-direction: column; padding: 20px; }
+  .identity { width: 100%; }
+  .navbar { width: 100%; justify-content: flex-start; }
+  .planet-earth { left: -8%; top: 90px; width: 45%; }
+  .planet-mars { right: -8%; top: 105px; width: 48%; }
+  .planet-venus { left: 22%; right: 22%; top: 34%; bottom: 14%; }
+  .planet-moon { left: 52%; right: 15%; top: 12%; bottom: 67%; }
+  .title-block { left: 20px; right: 20px; bottom: 105px; }
+  .description-rule p { width: min(350px, calc(100vw - 40px)); }
+  .footer { left: 20px; right: 20px; justify-content: space-between; }
+  .footer a { width: 54px; height: 54px; }
+  .content-section { padding: 90px 24px; }
+}
