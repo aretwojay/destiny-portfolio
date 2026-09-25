@@ -1,7 +1,7 @@
+import { Footer } from "../../components/common/Footer";
 import { Header } from "../../components/common/Header";
 import { profileAssets } from "../../constants/assets";
 import { PageProps } from "../../types";
-import { ProfileFooter } from "./components/ProfileFooter";
 import { SkillsPanel } from "./components/SkillsPanel";
 
 export function ProfilePage({ active, setActive }: PageProps) {
@@ -35,7 +35,7 @@ export function ProfilePage({ active, setActive }: PageProps) {
             <SkillsPanel />
           </div>
         </section>
-        <ProfileFooter setActive={setActive} />
+        <Footer variant="profile" setActive={setActive} />
       </section>
     </main>
   );

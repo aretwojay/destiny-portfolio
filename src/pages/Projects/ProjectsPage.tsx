@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { Footer } from "../../components/common/Footer";
 import { Header } from "../../components/common/Header";
 import { PageProps } from "../../types";
 import { ProjectCard } from "./components/ProjectCard";
 import { ProjectModal } from "./components/ProjectModal";
-import { ProjectsFooter } from "./components/ProjectsFooter";
 import { projectsList } from "./data/projectsData";
 
 export function ProjectsPage({ active, setActive }: PageProps) {
@@ -22,7 +22,7 @@ export function ProjectsPage({ active, setActive }: PageProps) {
           </div>
 
           <div className="projects-grid">
-            {projectsList.map((project) => (
+            {(projectsList || []).map((project) => (
               <ProjectCard
                 key={project.id}
                 variant={project.variant}
@@ -39,7 +39,7 @@ export function ProjectsPage({ active, setActive }: PageProps) {
           </div>
         </section>
 
-        <ProjectsFooter setActive={setActive} />
+        <Footer setActive={setActive} variant="projects" />
         {openProject === "diggers" && <ProjectModal onClose={closeProject} />}
       </section>
     </main>

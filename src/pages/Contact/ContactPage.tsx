@@ -1,6 +1,6 @@
+import { Footer } from "../../components/common/Footer";
 import { Header } from "../../components/common/Header";
 import { PageProps } from "../../types";
-import { ContactFooter } from "./components/ContactFooter";
 import { ContactForm } from "./components/ContactForm";
 
 export function ContactPage({ active, setActive }: PageProps) {
@@ -17,7 +17,7 @@ export function ContactPage({ active, setActive }: PageProps) {
           </div>
           <ContactForm />
         </section>
-        <ContactFooter setActive={setActive} />
+        <Footer setActive={setActive} variant="contact" />
       </section>
     </main>
   );
