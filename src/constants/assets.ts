@@ -1,7 +1,15 @@
 export const homeAssets = {
-  hero: "https://www.figma.com/api/mcp/asset/1f3504ce-9c8b-4f2a-890a-41113b80e184.png",
-  emblem:
-    "https://www.figma.com/api/mcp/asset/4745bb6d-89ca-4503-a211-434b363fc039.png",
+  hero: "https://www.figma.com/api/mcp/asset/1261ec3d-5fce-425d-b64b-91bf69be4e4e.png",
+  emblem: "https://www.figma.com/api/mcp/asset/a3748733-31f1-44ae-9a70-4ca41826c6a1.png",
+  earth: "https://www.figma.com/api/mcp/asset/d45fb668-9034-4d4e-b43d-ca8c3b39e089.png",
+  mars: "https://www.figma.com/api/mcp/asset/0901cd35-31f1-4c77-95e0-3616eeefea1c.png",
+  venus: "https://www.figma.com/api/mcp/asset/4f8889ab-8886-4a0a-97e6-3a937d8b2ca2.png",
+  moon: "https://www.figma.com/api/mcp/asset/3f5e9e9b-9cb8-4d21-a01c-36d9988af43c.png",
+  headerMask: "https://www.figma.com/api/mcp/asset/23e8dda7-e907-48ed-b942-d3aa999170ab.svg",
+  file: "https://www.figma.com/api/mcp/asset/3cc0131d-3fb6-4d32-8fcb-268d2b98574e.svg",
+  github: "https://www.figma.com/api/mcp/asset/05b8652d-a29c-4dab-931e-ebfa2722bd42.svg",
+  email: "https://www.figma.com/api/mcp/asset/76d299d2-b90e-4a20-abdd-b5b066385640.svg",
+  linkedin: "https://www.figma.com/api/mcp/asset/3aaee352-a12e-4c48-bb25-455a0d7f915f.svg",
 };
 
 export const projectAssets = {
