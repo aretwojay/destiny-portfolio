@@ -148,7 +148,12 @@ button {
   position: absolute;
   inset: 149px 0 0;
   overflow: hidden;
-  touch-action: pan-y;
+  touch-action: none;
+  cursor: grab;
+}
+.planet-stage:active,
+.planet-stage.drag-active {
+  cursor: grabbing;
 }
 .planet {
   position: absolute;
@@ -157,18 +162,24 @@ button {
   border: 0;
   background: transparent;
   cursor: grab;
-  touch-action: pan-y;
-  will-change: left, right, top, bottom, width;
+  touch-action: none;
+  will-change: left, right, top, bottom, width, transform;
   transition:
     left 900ms cubic-bezier(0.22, 1, 0.36, 1),
     right 900ms cubic-bezier(0.22, 1, 0.36, 1),
     top 900ms cubic-bezier(0.22, 1, 0.36, 1),
     bottom 900ms cubic-bezier(0.22, 1, 0.36, 1),
     width 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
     filter 500ms ease;
 }
 .planet:active {
   cursor: grabbing;
+}
+body.is-dragging,
+body.is-dragging * {
+  cursor: grabbing !important;
+  user-select: none !important;
 }
 .planet-halo {
   position: absolute;
