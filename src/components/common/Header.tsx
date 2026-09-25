@@ -9,8 +9,8 @@ export function Header({ active, setActive, projects = false }: HeaderProps) {
       <div
         className="header-mask"
         style={{
-          maskImage: `url("${projectAssets.headerMask}")`,
-          WebkitMaskImage: `url("${projectAssets.headerMask}")`,
+          maskImage: `url("${projects ? projectAssets.headerMask : homeAssets.headerMask}")`,
+          WebkitMaskImage: `url("${projects ? projectAssets.headerMask : homeAssets.headerMask}")`,
         }}
       />
       <div className="identity">
