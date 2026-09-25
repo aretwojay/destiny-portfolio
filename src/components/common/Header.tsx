@@ -15,14 +15,14 @@ export function Header({ active, setActive, projects = false }: HeaderProps) {
       />
       <div className="identity">
         <div className="emblem-wrap">
-          <img
-            src={projects ? projectAssets.emblem : homeAssets.emblem}
-            alt="Logo"
-          />
+          <img src={"/assets/emblem-1.svg"} alt="Logo" />
         </div>
         <div className="identity-copy">
           <div className="name">Ruben KABANGA MUYA</div>
-          <div className="status">// MOIS 5 JOUR 16 / NIVEAU 22 /</div>
+          <div className="status">
+            // MOIS {new Date().getMonth() + 1} JOUR {new Date().getDate()} /
+            NIVEAU {new Date().getFullYear() - 2004} /
+          </div>
         </div>
       </div>
       <nav className="navbar" aria-label="Navigation principale">

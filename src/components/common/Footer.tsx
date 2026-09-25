@@ -20,17 +20,7 @@ export function Footer({ setActive, className = "", variant }: FooterProps) {
 
   return (
     <footer className={variantClasses}>
-      <a
-        href="#accueil"
-        aria-label="Code"
-        onClick={(e) => {
-          if (setActive) {
-            e.preventDefault();
-            setActive("ACCUEIL");
-            window.location.hash = "accueil";
-          }
-        }}
-      >
+      <a href="/assets/cv.jpg" target="_blank" rel="noreferrer" aria-label="CV">
         <FileCode2 size={32} strokeWidth={1.5} />
       </a>
       <a

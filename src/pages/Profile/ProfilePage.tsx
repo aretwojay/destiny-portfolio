@@ -1,6 +1,5 @@
 import { Footer } from "../../components/common/Footer";
 import { Header } from "../../components/common/Header";
-import { profileAssets } from "../../constants/assets";
 import { PageProps } from "../../types";
 import { SkillsPanel } from "./components/SkillsPanel";
 
@@ -16,7 +15,7 @@ export function ProfilePage({ active, setActive }: PageProps) {
               <h1>PROFIL</h1>
             </div>
             <div className="profile-photo">
-              <img src={profileAssets.portrait} alt="Portrait" />
+              <img src={"/assets/profile.png"} alt="Portrait" />
             </div>
           </div>
           <div className="profile-right">

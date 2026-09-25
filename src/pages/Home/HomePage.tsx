@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Footer } from "../../components/common/Footer";
 import { Header } from "../../components/common/Header";
-import { homeAssets } from "../../constants/assets";
 import { PageProps } from "../../types";
 import { PlanetStage } from "./components/PlanetStage";
 
@@ -13,7 +12,7 @@ export function HomePage({ active, setActive }: PageProps) {
       <section className="hero" id="home">
         <img
           className="hero-image"
-          src={homeAssets.hero}
+          src={"/assets/background.png"}
           alt=""
           aria-hidden="true"
         />
