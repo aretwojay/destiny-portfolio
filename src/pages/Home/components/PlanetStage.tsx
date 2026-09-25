@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, type PointerEvent } from "react";
 import { homeAssets } from "../../../constants/assets";
 
 interface PlanetStageProps {
@@ -23,13 +23,13 @@ const planets = [
 export function PlanetStage({ step = 0, setStep }: PlanetStageProps) {
   const drag = useRef({ active: false, startX: 0 });
 
-  const start = (event: React.PointerEvent<HTMLButtonElement>) => {
+  const start = (event: PointerEvent<HTMLButtonElement>) => {
     if (event.pointerType === "mouse" && event.button !== 0) return;
     drag.current = { active: true, startX: event.clientX };
     event.currentTarget.setPointerCapture(event.pointerId);
   };
 
-  const end = (event: React.PointerEvent<HTMLButtonElement>) => {
+  const end = (event: PointerEvent<HTMLButtonElement>) => {
     if (!drag.current.active) return;
     const delta = event.clientX - drag.current.startX;
     drag.current.active = false;
